@@ -1,13 +1,24 @@
 import styles from '../styles/Home.module.css';
+import Login from './Login.js';
+import { Col, Row } from 'antd';
+import Image from 'next/image';
 
 function Home() {
   return (
-    <div>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-      </main>
+    <div className='main'>
+    <div className={styles.container}>
+      <div className={styles.columnLeft}>
+        <Image
+          src="/images/twiter-bg.png" 
+          alt="Example Image"
+          layout="fill" 
+          object-fit="cover" 
+        />
+      </div>
+      <div className={styles.columnRight}>
+      <Login />
+      </div>
+    </div>
     </div>
   );
 }
