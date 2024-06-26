@@ -24,21 +24,24 @@ function Login() {
     <h1>See what's <br />happening</h1>
     <h2>Join Hacktweet today.</h2>
     <Button type="primary" size={size} shape="round" onClick={() => setModal1Open(true)}> SignIn </Button>
-      <Modal title="Basic Modal" 
+      <Modal title="Create your Hackatweet account" 
+        centered
+        image = "/images/twiter-inverse.png"
         open={modal1Open}
         onOk={() => setModal1Open(false)}
         onCancel={() => setModal1Open(false)}
        >
         <SignIn />
       </Modal>
-      <p>allready have an account?</p>
+      <p>Already have an account?</p>
       
       <Button type="primary" size={size} shape="round" ghost  onClick={() => setModal2Open(true)}>
         SignUp
       </Button>
       <Modal
-        title="Vertically centered modal dialog"
+        title="Connect to Hackatweet" 
         centered
+        image = "/images/twiter-inverse.png"
         open={modal2Open}
         onOk={() => setModal2Open(false)}
         onCancel={() => setModal2Open(false)}
