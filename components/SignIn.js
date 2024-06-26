@@ -1,13 +1,15 @@
 import styles from '../styles/SignIn.module.css';
 import { useState } from 'react';
-
+import { useDispatch , useSelector } from 'react-redux';
+import { login } from '../reducers/user';
 function SignIn() {
 
-  const[signInusername, setSignInusername] = useState('');
+  const[signInUsername, setSignInUsername] = useState('');
   const[signInPassword, setSignInPassword] = useState('');
 
 	const handleConnection = () => {
 
+    const dispatch = useDispatch();
 		fetch('http://localhost:3000/users/signin', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -16,7 +18,7 @@ function SignIn() {
 			.then(data => {
 				if (data.result) {
           console.log('La personne existe bien');
-          // Changer de page
+          dispatch(login({username: signInUsername, token : data.token}));
 					setSignInUsername('');
 					setSignInPassword('');
 				}

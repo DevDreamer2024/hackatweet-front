@@ -1,13 +1,15 @@
 import {useState} from 'react';
 import styles from '../styles/SignUp.module.css';
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector} from 'react-redux';
+import { login } from '../reducers/user';
 
 function SignUp() {
 
   const [signUpUsername, setSignUpUsername] = useState('');
   const [signUpFirstname, setSignUpFirstname] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
+
+  const dispatch = useDispatch();
 
 //signup (inscription) d'un utilisateur
   const handleSignup = () => {
@@ -22,7 +24,7 @@ function SignUp() {
     }).then(response => response.json())
         .then(data => {
           if (data.result  === true) {
-            //si il y'a besoin d'un dispatch le placer ici 
+            dispatch(login({username: signUpUsername, token: data.token}))
             setSignUpUsername('')
             setSignUpFirstname('')
             setSignUpPassword('')
@@ -34,12 +36,12 @@ function SignUp() {
         
 
   return (
-    <div classname={styles.registerContainer}>
-      <div classname={styles.registerSection}>
+    <div className={styles.registerContainer}>
+      <div className={styles.registerSection}>
         <p>Sign Up</p>
-        <input type="text" placeholder="Username" id="signUpUsername" value={signUpUsername} onChange={(e) => setSignUpUsername(e.target.value)} />
-        <input type="text" placeholder="Firstname" id="SignUpFirstname" value={signUpFirstname} onChange={(e) => setSignUpFirstname(e.target.value)} />
-        <input type="password" placeholder="Password" id="" value={signUpPassword} onChange={(e) => setSignUpPassword(e.target.value)} />
+        <input type="text" placeholder="Username"  value={signUpUsername} onChange={(e) => setSignUpUsername(e.target.value)} />
+        <input type="text" placeholder="Firstname"  value={signUpFirstname} onChange={(e) => setSignUpFirstname(e.target.value)} />
+        <input type="password" placeholder="Password"  value={signUpPassword} onChange={(e) => setSignUpPassword(e.target.value)} />
         <button onClick={handleSignup}>Sign Up</button>
       </div>
     </div>
