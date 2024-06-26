@@ -9,7 +9,7 @@ function Home() {
     <div className={styles.container}>
       <div className={styles.columnLeft}>
         <Image
-          src="/images/twiter-bg.png" 
+          src="/images/twiter-bg.jpg" 
           alt="Twiter intro"
           layout="fill" 
           object-fit="cover" 
