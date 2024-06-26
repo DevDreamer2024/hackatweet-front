@@ -1,69 +1,64 @@
 import styles from '../styles/Login.module.css';
 import Image from 'next/image';
-
 import { useState } from 'react';
-import{ Button, Modal } from "antd";
-
-import  SignIn from './SignIn';
-import  SignUp from './SignUp';
-
+import { Button, Modal  } from "antd";
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
 function Login() {
-
-  const [modal1Open, setModal1Open] = useState(false);
-  const [modal2Open, setModal2Open] = useState(false);
-  const[size, setSize] = useState('large');
-
+  const [modalOpenSignUp, setmodalOpenSignUp] = useState(false);
+  const [modalOpenSignin, setmodalOpenSignin] = useState(false);
 
   return (
+    <>
     <div className='main'>
-    <div className={styles.container}>
-      <div className={styles.columnLeft}>
-        <Image
-          src="/images/twiter-bg.jpg" 
-          alt="Twiter intro"
-          layout="fill" 
-          object-fit="cover" 
-        />
-      </div>
-      <div className={styles.columnRight}>
-      <Image
-          src="/images/twiter-inverse.png" 
-          alt="twiter logo"
-          width={70}
-          height={70} 
-  />
-    <h1>See what's <br />happening</h1>
-    <h2>Join Hacktweet today.</h2>
-    <Button type="primary" size={size} shape="round" onClick={() => setModal1Open(true)}> SignIn </Button>
-      <Modal title="Create your Hackatweet account" 
-        centered
-        image = "/images/twiter-inverse.png"
-        open={modal1Open}
-        onOk={() => setModal1Open(false)}
-        onCancel={() => setModal1Open(false)}
-       >
-        <SignIn />
-      </Modal>
-      <p>Already have an account?</p>
-      
-      <Button type="primary" size={size} shape="round" ghost  onClick={() => setModal2Open(true)}>
-        SignUp
-      </Button>
-      <Modal
-        title="Connect to Hackatweet" 
-        centered
-        image = "/images/twiter-inverse.png"
-        open={modal2Open}
-        onOk={() => setModal2Open(false)}
-        onCancel={() => setModal2Open(false)}
-      >
-        <SignUp />
-      </Modal>
+      <div className={styles.container}>
+        <div className={styles.columnLeft}>
+          <div className={styles.imageContainer}>
+            <Image
+              src="/images/twiter-bg.jpg" 
+              alt="Twiter intro"
+              layout="fill"
+              className={styles.customImage}
+            />
+          </div>
+        </div>
+        <div className={styles.columnRight}>
+          <div className={styles.columnRightContent}>
+            <Image src="/images/twiter-inverse.png" alt="twiter logo" width={70} height={70} />
+            <h1>See what's <br />happening</h1>
+            <h2>Join Hacktweet today.</h2>
+            <Button type="primary" shape="round" onClick={() => setmodalOpenSignUp(true)}> SignUp </Button>
+            <Modal
+              centered
+              open={modalOpenSignUp}
+              onOk={() => setmodalOpenSignUp(false)}
+              onCancel={() => setmodalOpenSignUp(false)}
+              className='customModal'
+              footer={null}
+            >
+              <SignUp />
+            </Modal>
+            <p>Already have an account?</p>
+            <Button type="primary" shape="round" ghost onClick={() => setmodalOpenSignin(true)}>
+              SignIn
+            </Button>
+            <Modal
+              centered
+              open={modalOpenSignin}
+              onOk={() => setmodalOpenSignin(false)}
+              onCancel={() => setmodalOpenSignin(false)}
+              className= 'customModal' 
+              footer={null}
+            >
+              <SignIn />
+            </Modal>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-  );
+  </>
+);
 }
 
 export default Login;

@@ -2,6 +2,7 @@ import styles from '../styles/SignIn.module.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../reducers/user';
+import Image from 'next/image';
 function SignIn() {
 
   const[signInUsername, setSignInUsername] = useState('');
@@ -30,10 +31,11 @@ function SignIn() {
     <div>
       <div className={styles.registerContainer}>
 				<div className={styles.registerSection}>
-					<p>Sign-in</p>
+					<Image src="/images/twiter-inverse.png" alt="twiter logo" width={70} height={70} />
+					<p>Connect to Hackatweet</p>
 					<input type="text" placeholder="Username" id="signInUsername" onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} />
 					<input type="password" placeholder="Password" id="signInPassword" onChange={(e) => setSignInPassword(e.target.value)} value={signInPassword} />
-					<button id="connection" onClick={() => handleConnection()}>Connect</button>
+					<button id="connection" onClick={() => handleConnection()}>Sign In</button>
 				</div>
 			</div>
     </div>

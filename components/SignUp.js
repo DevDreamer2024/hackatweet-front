@@ -2,6 +2,7 @@ import {useState} from 'react';
 import styles from '../styles/SignUp.module.css';
 import { useDispatch, useSelector} from 'react-redux';
 import { login } from '../reducers/user';
+import Image from 'next/image';
 
 function SignUp() {
 
@@ -38,10 +39,11 @@ function SignUp() {
   return (
     <div className={styles.registerContainer}>
       <div className={styles.registerSection}>
-        <p>Sign Up</p>
-        <input type="text" placeholder="Username"  value={signUpUsername} onChange={(e) => setSignUpUsername(e.target.value)} />
-        <input type="text" placeholder="Firstname"  value={signUpFirstname} onChange={(e) => setSignUpFirstname(e.target.value)} />
-        <input type="password" placeholder="Password"  value={signUpPassword} onChange={(e) => setSignUpPassword(e.target.value)} />
+        <Image src="/images/twiter-inverse.png" alt="twiter logo" width={70} height={70} />
+        <p>Create your Hackatweet account</p>
+        <input type="text" placeholder="Username"  id="signUpUsername" value={signUpUsername} onChange={(e) => setSignUpUsername(e.target.value)} />
+        <input type="text" placeholder="Firstname" id="signUpFirstname" value={signUpFirstname} onChange={(e) => setSignUpFirstname(e.target.value)} />
+        <input type="password" placeholder="Password" id="signUpPassword" value={signUpPassword} onChange={(e) => setSignUpPassword(e.target.value)} />
         <button onClick={handleSignup}>Sign Up</button>
       </div>
     </div>
