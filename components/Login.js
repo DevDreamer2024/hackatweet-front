@@ -1,21 +1,33 @@
 import styles from '../styles/Login.module.css';
+import Image from 'next/image';
+
 import { useState } from 'react';
 import{ Button, Modal } from "antd";
 
 import  SignIn from './SignIn';
 import  SignUp from './SignUp';
-import Image from 'next/image';
 
 
 function Login() {
 
-    const [modal1Open, setModal1Open] = useState(false);
-    const [modal2Open, setModal2Open] = useState(false);
-    const[size, setSize] = useState('large');
+  const [modal1Open, setModal1Open] = useState(false);
+  const [modal2Open, setModal2Open] = useState(false);
+  const[size, setSize] = useState('large');
+
 
   return (
-    <div className={styles.containerLogin}>
-  <Image
+    <div className='main'>
+    <div className={styles.container}>
+      <div className={styles.columnLeft}>
+        <Image
+          src="/images/twiter-bg.jpg" 
+          alt="Twiter intro"
+          layout="fill" 
+          object-fit="cover" 
+        />
+      </div>
+      <div className={styles.columnRight}>
+      <Image
           src="/images/twiter-inverse.png" 
           alt="twiter logo"
           width={70}
@@ -48,6 +60,8 @@ function Login() {
       >
         <SignUp />
       </Modal>
+      </div>
+    </div>
     </div>
   );
 }
