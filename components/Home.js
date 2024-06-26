@@ -10,7 +10,7 @@ function Home() {
       <div className={styles.columnLeft}>
         <Image
           src="/images/twiter-bg.png" 
-          alt="Example Image"
+          alt="Twiter intro"
           layout="fill" 
           object-fit="cover" 
         />

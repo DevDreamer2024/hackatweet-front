@@ -14,7 +14,7 @@ function Login() {
     const[size, setSize] = useState('large');
 
   return (
-    <div>
+    <div className={styles.containerLogin}>
   <Image
           src="/images/twiter-inverse.png" 
           alt="twiter logo"
@@ -28,7 +28,7 @@ function Login() {
         open={modal1Open}
         onOk={() => setModal1Open(false)}
         onCancel={() => setModal1Open(false)}
-      >
+       >
         <SignIn />
       </Modal>
       <p>allready have an account?</p>
