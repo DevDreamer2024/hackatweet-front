@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import { useDispatch , useSelector } from "react-redux";
+import { addMessage } from "../reducers/message";
 import Tweet from "./Tweet";
 import LastTweets from "./LastTweets";
 import Trends from "./Trends";
@@ -40,7 +41,9 @@ function Home() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        console.log('----------------------',data);
+        // dispatch(addMessage({data}))
+        // dispatch(addhashtag({data.hashtag}))
         setTweets([...tweets, data]);
         setTweetText("");
         setCount(0);

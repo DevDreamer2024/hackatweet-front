@@ -5,7 +5,11 @@ import Image from "next/image";
 function Tweet() {
   const dispatch = useDispatch();
   const usertoken = useSelector((state) => state.user.token);
+
   const [tweetslist, setTweetslist] = useState([]);
+ 
+ 
+  const tweetslistStore = useSelector((state) => state.message);
 
   useEffect(() => {
     const fetchTweets = () => {
@@ -16,8 +20,11 @@ function Tweet() {
     };
     console.log("voici la liste des tweet ", tweetslist);
     fetchTweets();
-    const intervalId = setInterval(fetchTweets, 5000);
-    return () => clearInterval(intervalId);
+
+    console.log('--------------',data)
+    dispatch(message(data));
+    // const intervalId = setInterval(fetchTweets, 5000);
+    // return () => clearInterval(intervalId);
   }, []);
 
   const removeTweet = (tweetId) => {

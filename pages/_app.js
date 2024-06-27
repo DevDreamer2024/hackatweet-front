@@ -5,10 +5,14 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 
 import user from '../reducers/user';
+import hashtag from '../reducers/hashtag';
+import message from '../reducers/message';
 
 const store = configureStore({
   reducer: {
     user: user,
+    hashtag: hashtag,
+    message: message
   },
 });
 
