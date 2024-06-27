@@ -7,6 +7,7 @@ function SignIn() {
 
   const[signInUsername, setSignInUsername] = useState('');
   const[signInPassword, setSignInPassword] = useState('');
+  const[connectionError, setConnectionError] = useState(false);
   const dispatch = useDispatch();
 
 	const handleConnection = () => {
@@ -22,6 +23,9 @@ function SignIn() {
           dispatch(login({username: signInUsername, token : data.token}));
 					setSignInUsername('');
 					setSignInPassword('');
+					setConnectionError(false);
+				} else {
+					setConnectionError(true);//si l'utilisateur n'existe pas un message conditionnel apparait en return
 				}
 			});
 	};
@@ -36,6 +40,7 @@ function SignIn() {
 					<input type="text" placeholder="Username" id="signInUsername" onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} />
 					<input type="password" placeholder="Password" id="signInPassword" onChange={(e) => setSignInPassword(e.target.value)} value={signInPassword} />
 					<button id="connection" onClick={() => handleConnection()}>Sign In</button>
+					{connectionError && <p>User not found or invalid credential</p>}
 				</div>
 			</div>
     </div>

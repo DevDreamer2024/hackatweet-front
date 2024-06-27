@@ -1,0 +1,47 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  border: 1px solid #ccc;
+}
+
+.leftColumn,
+.middleColumn,
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+}
+
+.leftColumn {
+  width: 15vw;
+}
+.middleColumn {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.rightColumn {
+  width: 20vw;
+}
+
+.addTweet,
+.lastTweet,
+.tweet,
+.trends {
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.addTweet {
+  height: 20vh;
+}
+.lastTweet {
+  height: 20vh;
+}
+.tweet {
+  height: 60vh;
+}

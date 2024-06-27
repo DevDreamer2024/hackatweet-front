@@ -9,6 +9,7 @@ function SignUp() {
   const [signUpUsername, setSignUpUsername] = useState('');
   const [signUpFirstname, setSignUpFirstname] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
+  const [userExists, setUserExists] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -29,8 +30,10 @@ function SignUp() {
             setSignUpUsername('')
             setSignUpFirstname('')
             setSignUpPassword('')
+            setUserExists(false);
           } else {
-            alert('Sign up failed');
+            setUserExists(true);
+            //si l'utilisateur existe un message conditionnel apparait en return
           }
         });
           }
@@ -45,6 +48,7 @@ function SignUp() {
         <input type="text" placeholder="Firstname" id="signUpFirstname" value={signUpFirstname} onChange={(e) => setSignUpFirstname(e.target.value)} />
         <input type="password" placeholder="Password" id="signUpPassword" value={signUpPassword} onChange={(e) => setSignUpPassword(e.target.value)} />
         <button onClick={handleSignup}>Sign Up</button>
+        {userExists && <p>User already exists. Please login.</p>}
       </div>
     </div>
   );
