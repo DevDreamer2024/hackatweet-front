@@ -8,12 +8,14 @@ import Trends from "./Trends";
 
 function Home() {
   const dispatch  = useDispatch();
+  const userName = useSelector((state) => state.user.username);
+  const userFirstname = useSelector((state) => state.user.firstname);
   const userToken = useSelector((state) => state.user.token);
-  
+  console.log("voici le contenu du store : " , userFirstname , userName, userToken); 
   const [tweetText, setTweetText] = useState("");
   const [tweets, setTweets] = useState([]);
   const [count, setCount] = useState(0);
-  console.log('this is' , userToken);
+  console.log('this is the token' , userToken);
   const handleTweetSubmit = () => {
     if (tweetText === "") {
       return;

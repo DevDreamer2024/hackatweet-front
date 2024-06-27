@@ -20,7 +20,7 @@ function SignIn() {
 			.then(data => {
 				if (data.result) {
           console.log('La personne existe bien');
-          dispatch(login({username: signInUsername, token : data.token}));
+          dispatch(login({username: signInUsername, token : data.token , firstname : data.firstname}));
 					setSignInUsername('');
 					setSignInPassword('');
 					setConnectionError(false);
